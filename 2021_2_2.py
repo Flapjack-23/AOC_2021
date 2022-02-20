@@ -1,0 +1,26 @@
+day2_data_file = open('2021_2.txt', 'r')
+day2_data_list = day2_data_file.read().splitlines()
+day2_data_list = list(map(str, day2_data_list))
+h_count = 0
+d_count = 0
+a_count = 0
+
+
+for item in day2_data_list:
+    # find number index, should always be last character
+    num = int(item[-1])
+
+    if 'forward' in item:
+        h_count += num
+        d_count += (a_count * num)
+    elif 'down' in item:
+
+        a_count += num
+    elif 'up' in item:
+
+        a_count -= num
+
+print("aim: ", a_count)
+print("height: ", h_count)
+print("depth: ", d_count)
+print(d_count * h_count)
